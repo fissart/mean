@@ -57,5 +57,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-user/
-server/
+user/node_modules/
+server/node_modules/
+user/new/
+user/.angular/
+server/new/
