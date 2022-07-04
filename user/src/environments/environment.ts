@@ -907,7 +907,7 @@ db.wwws.remove( {'_id':ObjectId('623bcd104e6f90b190a6d1d7')} )
 
 
 mongodump --out w1.json --db fismart --host localhost  //descargar
-mongorestore --db fisart w1.json/fisart  //subir
+mongorestore --db fismart ww.json/fismart  //subir
 
 mongodump --out w1.json --db fismart --collection wwws --host localhost
 mongorestore --db namedatabase --collection namecollectionqueenviar w1.json/fisart //restaurar coleccion.

@@ -158,7 +158,7 @@ export async function getController(req: Request, res: Response): Promise<Respon
             },
         },
     ]);
-    console.log(integers);
+//console.log(integers);
     return res.json(integers);
 }
 

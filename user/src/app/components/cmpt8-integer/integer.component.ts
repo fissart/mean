@@ -4,6 +4,7 @@ import { UsersService } from '../../services/users.service'
 import { ThemesService } from "../../services/themes.service";
 import { TaskService } from '../../services/task.service'
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import * as XLSX from 'xlsx';
 
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +16,24 @@ import { environment } from '../../../environments/environment';
     styleUrls: ['./integer.component.css']
 })
 export class UsersCurseComponent implements OnInit {
+  name = 'www.xlsx';
+  exportToExcel(): void {
+    let element = document.getElementById('season-tble');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+
+XLSX.utils.sheet_add_aoa(worksheet, [
+  [1],                             // <-- Write 1 to cell B3
+  ,                                // <-- Do nothing in row 4
+  [/*B5*/, /*C5*/, /*D5*/, {t: "n", f: 'SUMA(A1:A20, A20:A52)'}]  // <-- Write "abc" to cell E5
+], { origin: "B54" });
+
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+
+    XLSX.writeFile(book, this.name);
+  }
+
   options = {
     "offset": 0,
     "tolerance": 0,
@@ -34,6 +53,7 @@ export class UsersCurseComponent implements OnInit {
       private modal: NgbModal,
     ) { }
     photo: any = [];
+    themes: any = [];
     apiURL = environment.apiURL;
     user = localStorage.getItem('id') || "";
     onImgError(event: any) {
@@ -62,12 +82,12 @@ export class UsersCurseComponent implements OnInit {
 
 getCurse(){
   this.router.params.subscribe(params => {
-      console.log(params['idcurso'])
+    //console.log(params['idcurso'])
       this.curseService.getintegers(params['idcurso'])
           .subscribe(
               (res: any) => {
                   this.photo = res;
-                  console.log(res, "www");
+                this.themes=res[0].cursse[0].units;
               },
               err => console.log(err)
           )
@@ -88,7 +108,7 @@ getCurse(){
         if (window.confirm('Desea salir del curso?')) {
             this.curseService.deleteinteger(id)
                 .subscribe(res => {
-                        console.log(res, "www");
+                        //console.log(res, "www");
 
                       this.getCurse();
                 });

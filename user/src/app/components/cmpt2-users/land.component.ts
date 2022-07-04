@@ -95,7 +95,7 @@ export class LandComponent implements OnInit {
 				.subscribe(
 					(res: any) => {
 						this.photos = res;
-						console.log("getUser")
+					//	console.log("getUser")
                         //localStorage.setItem('imguser', res.foto);
 					},
 					err => console.log(err)
@@ -111,7 +111,7 @@ export class LandComponent implements OnInit {
 		this.userService.get().subscribe(
 			(res: any) => {
 				this.wwwww = res;
-				console.log(res);
+				//console.log(res);
 			},
 			err => console.log(err)
 		)
@@ -150,7 +150,7 @@ export class LandComponent implements OnInit {
 		if (window.confirm('Desea borrar este usuario?')) {
 			this.userService.deletePhoto(ww)
 				.subscribe(res => {
-					console.log(res);
+					//console.log(res);
 					this.router.navigate(['/user']);
 				if(ww==localStorage.getItem('id')){
                 localStorage.removeItem('id');

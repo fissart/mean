@@ -14,7 +14,7 @@
           <img [src]="apiURL+'/'+ textoimg" class="m-auto w-100 img-fluid" (error)="onImgError($event)">
         </div>
         <div class="bg-light text-center border rounded">
-            {{textoimg}}
+    *        {{textoimg}}
         </div>
         <ngx-doc-viewer *ngIf="textoimg.split('.').pop()=='doc'"
         [url]="apiURL+'/'+ textoimg"
@@ -43,6 +43,32 @@
 
 
 <div class="container">
+
+  <div>
+    <button (click)="exportToExcel()" class="btn btn-light">Exportar a Excel</button>
+    <table id="season-tble">
+      <tr>
+        <th>n</th>
+        <th>Nombre</th>
+        <ng-container *ngFor="let www of themes index as i">
+          <th *ngFor="let ww_ of www['themes'] index as i">{{ww_.title.substring(0,3)}}...</th>
+        </ng-container>
+      </tr>
+      <tr *ngFor="let www of photo index as i">
+        <td>{{ i+1 }} </td>
+        <td>{{ www.userw[0].name }}</td>
+        <ng-container *ngFor="let w of www['cursse'] index as i">
+          <ng-container *ngFor="let ww of w['units'] index as i" class="text-info">
+            <ng-container *ngFor="let wwwww of ww['themes'] index as i" class="text-success">
+              <td *ngFor="let ww_ of wwwww['task'] index as i">{{ww_.note}}</td>
+            <!--
+          -->
+        </ng-container>
+        </ng-container>
+        </ng-container>
+      </tr>
+    </table>
+  </div>
 
     <div class="row d-flex justify-content-center">
         <div [ngClass]="[www.userw[0]._id==user ? 'cardnew_ col-md-3 m-3 p-1':'cardnew col-md-3 m-3 p-1']" *ngFor="let www of photo index as i">
@@ -81,7 +107,7 @@
                                               <input *ngIf="rol==1 || rol==2" type="text" class="form-control p-1"  [value]="ww_.note" (blur)="onBlurMethod($event, ww_._id, ww_.task)">
                                           </div>
                                         </div>
-                                        
+
                                       </div>
                                     </div>
                                   </div>

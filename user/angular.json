@@ -1,4 +1,4 @@
-{
+ {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": "6cb602fa-ebe7-44cd-8c27-cee4a8cf135f"
@@ -39,7 +39,7 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/animate.css/animate.min.css",
-              
+
               "node_modules/ngx-headroom/headroom.css",
 
             ],

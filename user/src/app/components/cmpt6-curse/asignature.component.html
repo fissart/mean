@@ -5,7 +5,7 @@
 <div class="py-5"></div>
 <!--modal contenido-->
 <ng-template #ww let-modal>
-    <div class="modal-body bg-warning p-5">
+    <div class="modal-body bg-light p-5">
         <!--<markdown [data]="text" katex [katexOptions]="options"></markdown>-->
         <ng-katex-html [html]="text"></ng-katex-html>
         <img *ngIf="file.split('.').pop()=='png'||file.split('.').pop()=='jpg'||file.split('.').pop()=='jpeg'||file.split('.').pop()=='svg'||file.split('.').pop()=='webp'" [src]="apiUrl+'/'+ file" class="img-fluid w-100" (error)="onImgError($event)">
@@ -94,8 +94,8 @@
         <!--Unidades-->
         <div class="row m-0 justify-content-center">
             <div class="col-md-6 p-3" *ngFor="let photo of photo.unidades index as i">
-                <div class="border justify-content-center align-items-center p-3">
-                    <div class="h5 text-info">
+                <div class="border p-3">
+                    <div class="h5">
                         Unity {{i+1}}: {{photo.title}}
                     </div>
 
@@ -108,14 +108,14 @@
                         <button class="btn btn-success card-photo shadow-none" (click)="errasesection(photo._id, photo.temas.length)">Delete unity</button>
                     </div>
 
-<div class="row justify-content-center  w-100">
+<div class="row justify-content-center w-100 m-0">
                     <div class="col-md-6 p-2" *ngFor="let subItem of photo['temas'] index as i">
                         <div [ngClass]="[subItem.usertask.length==0 ? 'cardnew transparencia p-1 align-items-center':'cardnew_ p-1 align-items-center text-light']">
                             <div class="h6 w-100">T{{i+1}}: {{subItem.title}}</div>
                                 <button class='btn card-photo text-light' (click)="open1(ww, $any(subItem).description, $any(subItem).img)">Teoría</button>
                                 <button class='btn card-photo text-light' (click)="open1(ww, $any(subItem).task, $any(subItem)._id)">Tarea</button>
-                                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn card-photo shadow-none text-primary" (click)="errase(subItem._id,subItem.usertask.length)">Delete theme</button>
-                                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn card-photo shadow-none text-primary" (click)="edittheme(subItem._id)">Edit theme</button>
+                                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn card-photo shadow-none" (click)="errase(subItem._id,subItem.usertask.length)">Delete theme</button>
+                                <button *ngIf="photouser.rol==1 || photouser.rol==2" class="btn card-photo shadow-none" (click)="edittheme(subItem._id)">Edit theme</button>
                                 <button *ngIf="subItem.usertask.length==0 && subItem.time>DateNow" class="btn btn-info card-photo shadow-none mb-1" (click)="selectheme(subItem._id, photo._id)">Enviar tarea</button>
                                 <button *ngIf="subItem.usertask.length==1  && subItem.time>DateNow" class="btn btn-outline-info card-photo shadow-none border-0" (click)="updatetask(subItem.usertask[0]._id)">Editar tarea</button>
                                 <button *ngIf="subItem.usertask.length==1 && subItem.time>DateNow" class="btn card-photo btn-outline-light shadow-none border-0" (click)="deletetask(subItem.usertask[0]._id)">Eliminar tarea</button>

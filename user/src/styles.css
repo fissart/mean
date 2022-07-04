@@ -5,9 +5,16 @@
 @import '~ngx-headroom/headroom.css';
 
 body{
+  background: rgb(22,135,152);
+  background: -moz-linear-gradient(90deg, rgba(22,135,152,1) 0%, rgba(22,135,152,1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(22,135,152,1) 0%, rgba(22,135,152,1) 100%);
+  background: linear-gradient(90deg, rgba(22,135,152,1) 0%, rgba(22,135,152,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#168798",endColorstr="#168798",GradientType=1);
+/*
 background: url("/assets/w_3.jpeg");
 background-size: 100%;
 background-attachment: fixed;
+*/
 }
 
 .cursorpoint{
@@ -31,12 +38,18 @@ text-transform: uppercase;
 }
 
 .nav {
-  background: url("/assets/w_3.jpeg");
+  background: rgb(22,135,152);
+background: -moz-linear-gradient(90deg, rgba(22,135,152,1) 0%, rgba(22,135,152,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(22,135,152,1) 0%, rgba(22,135,152,1) 100%);
+background: linear-gradient(90deg, rgba(22,135,152,1) 0%, rgba(22,135,152,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#168798",endColorstr="#168798",GradientType=1);
+/*
+background: linear-gradient(90deg, rgba(58,175,180,1) 0%, rgba(32,153,179,1) 47%, rgba(13,75,112,1) 100%);
+background: url("/assets/w_3.jpeg");
 
   background-size: 100%;
   min-height: 10vh;
     background-attachment: fixed;
-    /*
 */
 }
 
@@ -320,7 +333,7 @@ blockquote {
     animation: pulse;
     /*wobble flip bounce pulse referring directly to the animation's @keyframe declaration */
     animation-duration: .1s;
-    background-color:skyblue;
+    background-color:orange;
     color: white;
 }
 .cardnew_ {
@@ -329,8 +342,8 @@ blockquote {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    border: solid 1px white; 
-    box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+    border: solid 1px white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
     /*
     background-color: rgba(250,100,200,.8);
     border: .15em solid rgb(212, 101, 203);
