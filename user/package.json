@@ -25,6 +25,8 @@
     "@types/swiper": "^6.0.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.0.2",
+    "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
     "headroom.js": "^0.12.0",
     "install": "^0.13.0",
     "jquery": "^3.6.0",

@@ -39,7 +39,7 @@ import { UsersCurseComponent } from './components/cmpt8-integer/integer.componen
 import { FileComponent } from './components/cmpt13-file/file.component';
 //import { NgxMarkdownItModule } from "ngx-markdown-it";
 //import { NgxMarkdownItConfig } from "ngx-markdown-it";
-
+import { ExcelService } from './services/excel.service';
 //import { default as markmapPlugin } from 'markdown-it-markmap';
 @NgModule({
 	declarations: [
@@ -86,7 +86,7 @@ import { FileComponent } from './components/cmpt13-file/file.component';
 		BrowserAnimationsModule,
         NgxExtendedPdfViewerModule
 	],
-	providers: [],
+	  providers: [ExcelService],
 	bootstrap: [AppComponent],
 })
 export class AppModule { }

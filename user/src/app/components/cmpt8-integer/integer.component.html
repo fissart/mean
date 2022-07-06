@@ -16,19 +16,19 @@
         <div class="bg-light text-center border rounded">
     *        {{textoimg}}
         </div>
-        <ngx-doc-viewer *ngIf="textoimg.split('.').pop()=='doc'"
+        <ngx-doc-viewer *ngIf="textoimg && textoimg.split('.').pop()=='doc'"
         [url]="apiURL+'/'+ textoimg"
         viewer="google"
         style="width:100%;height:100vh;"
         ></ngx-doc-viewer>
 
-        <ngx-doc-viewer *ngIf="textoimg.split('.').pop()=='docx' || textoimg.split('.').pop()=='pptx'|| textoimg.split('.').pop()=='ptx' || textoimg.split('.').pop()=='xlsx'|| textoimg.split('.').pop()=='xls'"
+        <ngx-doc-viewer *ngIf="textoimg && textoimg.split('.').pop()=='docx' || textoimg.split('.').pop()=='pptx'|| textoimg.split('.').pop()=='ptx' || textoimg.split('.').pop()=='xlsx'|| textoimg.split('.').pop()=='xls'"
         [url]="apiURL+'/'+ textoimg"
         viewer="google"
         style="width:100%;height:100vh;"
         ></ngx-doc-viewer>
 
-        <ngx-extended-pdf-viewer *ngIf="textoimg && textoimg.split('.').pop()=='pdf'"
+        <ngx-extended-pdf-viewer *ngIf="textoimg && textoimg && textoimg.split('.').pop()=='pdf'"
         [src]="apiURL+'/'+ textoimg"
         [height]="'800px'"
         [useBrowserLocale]="false"
@@ -45,6 +45,7 @@
 <div class="container">
 
   <div>
+    <!--<button (click)="generateExcel()"> Generate Excel</button>-->
     <button (click)="exportToExcel()" class="btn btn-light">Exportar a Excel</button>
     <table id="season-tble">
       <tr>

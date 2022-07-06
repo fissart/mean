@@ -15,23 +15,57 @@ import { environment } from '../../../environments/environment';
     templateUrl: './integer.component.html',
     styleUrls: ['./integer.component.css']
 })
+
 export class UsersCurseComponent implements OnInit {
-  name = 'www.xlsx';
+  //name = 'www.xlsx';
+
+
   exportToExcel(): void {
+/*    const rows = this.photo.map(row => ({
+        name: row._id,
+        birthday: row._id
+      }));
+      console.log(rows);
+*/
     let element = document.getElementById('season-tble');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+ //const worksheet = XLSX.utils.json_to_sheet(rows);
 
-
-XLSX.utils.sheet_add_aoa(worksheet, [
-  [1],                             // <-- Write 1 to cell B3
-  ,                                // <-- Do nothing in row 4
-  [/*B5*/, /*C5*/, /*D5*/, {t: "n", f: 'SUMA(A1:A20, A20:A52)'}]  // <-- Write "abc" to cell E5
-], { origin: "B54" });
+/*
+    XLSX.utils.sheet_add_aoa(worksheet, [
+      [1],
+      ,
+      [, , , {t: "n", f: 'SUMA(A1:A20, A20:A52)'}]  // <-- Write "abc" to cell E5
+    ], { origin: "B54" });
+*/
+//XLSX.utils.sheet_set_array_formula(worksheet, "C52", "SUMA(C2:C52)");
 
     const book: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+/* calculate column width */
+    //const max_width = element.reduce((w, r) => Math.max(w, r.nombre.length), 10);
+      worksheet["!cols"] = [ { wch: 5 },
+        { wch: 30 },
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1} , 
+        {wch: 4.1} ,
+        {wch: 4.1} ,
+        {wch: 4.1}
+      ];
 
-    XLSX.writeFile(book, this.name);
+    XLSX.writeFile(book, 'notas.xlsx');
   }
 
   options = {
@@ -173,5 +207,5 @@ getCurse(){
               return false;
               }
 
-
+//https://stackblitz.com/edit/angular6-export-xlsx-ghx2tg?file=src%2Fapp%2Fapp.component.ts
 }

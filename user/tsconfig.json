@@ -6,6 +6,11 @@
     "outDir": "./new/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
+    "paths": {
+      "exceljs": [
+        "node_modules/exceljs/dist/exceljs.min"
+      ]
+    },
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
