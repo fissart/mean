@@ -49,6 +49,17 @@
     <button (click)="exportToExcel()" class="btn btn-light">Exportar a Excel</button>
     <table id="season-tble">
       <tr>
+      <!--
+          <td rowspan="3">1st col</td> <td colspan="5">2nd col</td>
+      </tr>
+      <tr>
+          <td>2nd col</td><td>wwwwwwwwwwwwww</td>
+      </tr>
+      <tr>
+          <td>2nd col</td><td>wwwwwwwww</td>
+      </tr>
+      <tr>
+      -->
         <th>n</th>
         <th>Nombre</th>
         <ng-container *ngFor="let www of themes index as i">

@@ -21,16 +21,48 @@ export class UsersCurseComponent implements OnInit {
 
 
   exportToExcel(): void {
-/*    const rows = this.photo.map(row => ({
-        name: row._id,
-        birthday: row._id
+    console.log(this.photo);
+
+    const rows = this.photo.map((row, index) => ({
+      name: row.userw[0].name,
+      index: index,
+      namew: row.userw[0].tasks.map(w =>w.note)
+      //      suma: row.userw[0].tasks.note.reduce((a,b)=>a+b),
       }));
       console.log(rows);
-*/
+
     let element = document.getElementById('season-tble');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
  //const worksheet = XLSX.utils.json_to_sheet(rows);
+var i = 0;
+ for (const [i, file] of this.photo.entries()) {
+  console.log(i);
+  const celda=`O${i+5}`
+  const suma=`SUM(C${i+5}:L${i+5})`
+//  XLSX.utils.sheet_set_array_formula(worksheet, "`N${i}`", "SUM(C30:C34)");
+XLSX.utils.sheet_set_array_formula(worksheet, celda, suma);
+worksheet["!cols"] = [ { wch: 5 },
+  { wch: 30 },
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1} ,
+  {wch: 4.1}
+];
 
+}
 /*
     XLSX.utils.sheet_add_aoa(worksheet, [
       [1],
@@ -44,27 +76,6 @@ export class UsersCurseComponent implements OnInit {
     XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
 /* calculate column width */
     //const max_width = element.reduce((w, r) => Math.max(w, r.nombre.length), 10);
-      worksheet["!cols"] = [ { wch: 5 },
-        { wch: 30 },
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1} , 
-        {wch: 4.1} ,
-        {wch: 4.1} ,
-        {wch: 4.1}
-      ];
-
     XLSX.writeFile(book, 'notas.xlsx');
   }
 
@@ -121,6 +132,8 @@ getCurse(){
           .subscribe(
               (res: any) => {
                   this.photo = res;
+                  console.log(res);
+
                 this.themes=res[0].cursse[0].units;
               },
               err => console.log(err)

@@ -5,10 +5,11 @@
 export const environment = {
   production: false,
   title: 'Local Environment Heading',
-  apiURL:  'http://169.197.183.233:3000'
+  apiURL:  'https://fractales.cf:8000'
   /*
   apiURL: 'http://localhost:3000'
   */
+
 
 };
 
@@ -905,6 +906,19 @@ db.wwws.updateMany( { }, { $unset: { type: "" } } )
 //Remover collection
 db.wwws.remove( {'_id':ObjectId('623bcd104e6f90b190a6d1d7')} )
 
+db.integers.update( {'user':ObjectId('62ce287b27b88e27b4a1bbc1')}, {$set:{'curse':ObjectId('6270a16264b8ba3f004ef6c5')}} )
+  db.curses.update( {'_id':ObjectId('62ce287b27b88e27b4a1bbc1')}, {$set:{'title':
+  {
+      "name": "Docente",
+      "email": {"ww@w":"wwwwwwwwwwww",
+    www:"wwwwwwwwwwwwwww"},
+      "password": "wwWWWWWWWWWW",
+      "rol": "3",
+      "foto": "uploads/user/d45d65db-c8cc-4144-836b-cc0786d84456.jpg",
+      "createdAt": "2022-04-16T17:10:46.123Z",
+      "updatedAt": "2022-05-28T14:48:34.763Z"
+    }
+  }} )
 
 mongodump --out w1.json --db fismart --host localhost  //descargar
 mongorestore --db fismart ww.json/fismart  //subir
